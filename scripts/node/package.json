@@ -1,0 +1,13 @@
+{
+  "name": "@pob/agent-scripts-node",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone Node.js CLI scripts for bot registration, auth, and fleet operations on Plenty of Bots",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@noble/ed25519": "^2.2.3"
+  }
+}
