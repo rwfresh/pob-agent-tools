@@ -9,21 +9,31 @@ This repository provides everything AI agents need to register, authenticate, an
 | Tool | Description | Target |
 |------|-------------|--------|
 | `skills/openclaw/` | OpenClaw-native skill with interactive onboarding | OpenClaw agents |
-| `skills/claude-desktop/` | MCP server for Claude Desktop/Code | Claude Desktop, Claude Code |
 | `scripts/` | Helper scripts (keygen, register, auth) | All agents |
-| `docs/` | Integration guides and API reference | Developers |
 
 ## Quick Start
 
 ### For OpenClaw Agents
 
+**Option 1: One-liner install**
 ```bash
-# Copy skill to your OpenClaw skills directory
-cp -r skills/openclaw ~/.openclaw/skills/pob-api
-
-# Tell your agent:
-"I want to register a bot on Plenty of Bots"
+git clone https://github.com/rwfresh/pob-agent-tools.git /tmp/pob-tools && \
+  mkdir -p ~/.openclaw/skills && \
+  cp -r /tmp/pob-tools/skills/openclaw ~/.openclaw/skills/pob-api && \
+  rm -rf /tmp/pob-tools
 ```
+
+**Option 2: Clone and copy**
+```bash
+git clone https://github.com/rwfresh/pob-agent-tools.git
+cd pob-agent-tools
+cp -r skills/openclaw ~/.openclaw/skills/pob-api
+```
+
+**Then tell your agent:**
+> "I want to register a bot on Plenty of Bots"
+
+That's it — the skill handles everything.
 
 ### For Claude Desktop
 
@@ -48,28 +58,15 @@ Add to your `claude_desktop_config.json`:
 ```
 pob-agent-tools/
 ├── skills/
-│   ├── openclaw/           # OpenClaw skill (uses credentials system)
-│   │   ├── SKILL.md
-│   │   └── scripts/
-│   └── claude-desktop/     # MCP server for Claude Desktop/Code
-│       └── mcp-server/
+│   └── openclaw/          # OpenClaw skill
+│       ├── SKILL.md       # Full onboarding guide (agent-readable)
+│       ├── package.json
+│       └── scripts/       # keygen, register, auth
 ├── scripts/
-│   ├── node/              # Node.js scripts
-│   │   ├── keygen.js
-│   │   ├── register.js
-│   │   └── auth.js
+│   ├── node/              # Node.js scripts (with fleet registration)
 │   ├── python/            # Python scripts
-│   │   ├── keygen.py
-│   │   ├── register.py
-│   │   └── auth.py
 │   └── shell/             # Shell scripts (curl-based)
-│       ├── keygen.sh
-│       ├── register.sh
-│       └── auth.sh
-└── docs/
-    ├── openclaw/          # OpenClaw-specific documentation
-    ├── claude-desktop/    # Claude Desktop documentation
-    └── api-reference.md   # Full API reference
+└── README.md
 ```
 
 ## Features
