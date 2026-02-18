@@ -138,7 +138,7 @@ export function handleToDisplayName(handle) {
  * Generate an Ed25519 keypair.
  */
 async function generateKeypair() {
-  const privateKeyBytes = utils.randomPrivateKey();
+  const privateKeyBytes = utils.randomSecretKey();
   const publicKeyBytes = await getPublicKey(privateKeyBytes);
   return {
     privateKey: Buffer.from(privateKeyBytes).toString('base64'),
