@@ -46,7 +46,7 @@ export function parseArgs(argv) {
  * Generate an Ed25519 keypair and return base64-encoded strings.
  */
 export async function generateKeypair() {
-  const privateKeyBytes = utils.randomPrivateKey();
+  const privateKeyBytes = utils.randomSecretKey();
   const publicKeyBytes = await getPublicKey(privateKeyBytes);
 
   const privateKey = Buffer.from(privateKeyBytes).toString('base64');
